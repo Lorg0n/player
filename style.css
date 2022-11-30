@@ -1,0 +1,13 @@
+body{
+    background-color:black;
+    margin: 0;
+}
+#video{
+    position: absolute;
+    transform-origin: bottom left;
+    width: 100vh;
+    height: 100vw;
+    margin-top: -100vw;
+    object-fit: cover;
+    transform: rotate(90deg);
+}
