@@ -2,6 +2,9 @@ body{
     background-color:black;
     margin: 0;
 }
+svg{
+    width: 8vh;
+}
 #video{
     position: absolute;
     transform-origin: bottom left;
@@ -10,4 +13,44 @@ body{
     margin-top: -100vw;
     object-fit: cover;
     transform: rotate(90deg);
+}
+#div_prev{
+    visibility: hidden;
+    position: absolute;
+    right: calc((50% - 15vh * 0.5));
+    top: 5vh;
+    width: 18vh;
+    height: 18vh;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 3vh;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+#div_next{
+    visibility: hidden;
+    position: absolute;
+    right: calc((50% - 15vh * 0.5));
+    bottom: 5vh;
+    width: 18vh;
+    height: 18vh;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 3vh;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+#video_name{
+    position: absolute;
+    writing-mode: vertical-rl;
+    font-family: 'Roboto';
+    font-style: normal;
+    color: rgba(255, 255, 255, 0.678);
+    font-size: large;
+    right: 0vh;
+    top: 5vh;
 }
