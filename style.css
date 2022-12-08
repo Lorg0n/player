@@ -49,8 +49,10 @@ svg{
     writing-mode: vertical-rl;
     font-family: 'Roboto';
     font-style: normal;
-    color: rgba(255, 255, 255, 0.678);
+    color: rgba(255, 255, 255, 0.8);
     font-size: large;
     right: 0vh;
     top: 5vh;
+
+    text-shadow: 0 0 15px rgba(0,0,0,1.0), 0 0 10px rgba(0,0,0,.5);
 }
