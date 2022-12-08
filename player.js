@@ -39,27 +39,24 @@ function showControls(state){
     stateString = state ? 'visible' : 'hidden'
     if (state) {
         if (currentVideo > 0) {
-            prevDiv.style.visibility = stateString
-        } else if (currentVideo + 1 < data['episodes'].length) {
-            nextDiv.style.visibility = stateString
+            prevDiv.style.visibility = 'visible'
+        } else {
+            prevDiv.style.visibility = 'hidden'
+        }
+        if (currentVideo + 1 < data['episodes'].length) {
+            nextDiv.style.visibility = 'visible'
+        } else {
+            nextDiv.style.visibility = 'hidden'
         }
     } else {
-        prevDiv.style.visibility = stateString
-        nextDiv.style.visibility = stateString
+        prevDiv.style.visibility = 'hidden'
+        nextDiv.style.visibility = 'hidden'
     }
 }
 
-video.addEventListener('pause', function(e){
-    showControls(true)
-})
-
-video.addEventListener('play', function(e){
-    showControls(false)
-})
-
 Telegram.WebApp.onEvent('viewportChanged', function(e){
     video.style.width = tg.viewportHeight;
-})
+});
 
 prevDiv.addEventListener('click', function (event) {
     prevVideo()
@@ -69,15 +66,19 @@ nextDiv.addEventListener('click', function (event) {
     nextVideo()
 });
 
+window.setInterval(function(){ 
+    showControls(video.paused)
+}, 0.2);
+
 video.addEventListener('timeupdate', function(e){
     videoName.textContent = (parseInt(data['first']) + currentVideo) + " эпизод"
-})
+});
 
 video.addEventListener('ended', function(e){
     if (data['autoplay'] && currentVideo < data['episodes'].length){
         nextVideo()
     }
-})
+});
 
 $(window).on('load', function () {
     playM3u8(data['episodes'][0]['url'])
