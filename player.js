@@ -76,7 +76,7 @@ nextDiv.addEventListener('click', function (event) {
 });
 
 video.addEventListener('timeupdate', function(e){
-    videoName.textContent = (data['first'] + currentVideo) + " эпизод"
+    videoName.textContent = (parseInt(data['first']) + currentVideo) + " эпизод"
 })
 
 video.addEventListener('ended', function(e){
