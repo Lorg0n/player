@@ -46,7 +46,7 @@ function showControls(state){
     if (state) {
         if (currentVideo > 0) {
             prevDiv.style.visibility = stateString
-        } else if (currentVideo < data['episodes'].length) {
+        } else if (currentVideo + 1 < data['episodes'].length) {
             nextDiv.style.visibility = stateString
         }
     } else {
