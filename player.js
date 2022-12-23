@@ -28,17 +28,48 @@ function playM3u8(url) {
   }
 }
 
+function playEpisode(url){
+  cachingNodes = JSON.parse(httpGet("https://api.anilibria.tv/v2/getCachingNodes"));
+  checkForErrors(cachingNodes, url).then((link) => link && playM3u8(link))
+}
+
+const checkForErrors = async (array, episode) => {
+  for (const node of array) {
+    const url = 'https://'+node+episode;
+    try {
+      const res = await fetch(url);
+      console.log(url);
+      if (res.ok) {
+        console.log(url);
+        return url;
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+}
+
+function httpGet(theUrl)
+{
+  var xmlHttp = new XMLHttpRequest();
+  xmlHttp.open("GET", theUrl, false);
+  xmlHttp.send(null);
+  return xmlHttp.responseText;
+}
+
 function nextVideo() {
   if (nextState){
-    playM3u8(data["episodes"][currentVideo + 1]["url"]);
+    playEpisode(data["episodes"][currentVideo + 1]["url"]);
     currentVideo += 1;
+    controlUpdate();
   }
 }
 
 function prevVideo() {
   if (prevState){
-    playM3u8(data["episodes"][currentVideo - 1]["url"]);
+    playEpisode(data["episodes"][currentVideo - 1]["url"]);
     currentVideo -= 1;
+    controlUpdate();
   }
 }
 
@@ -76,16 +107,11 @@ function controlUpdate(){
   }
 }
 
-window.setInterval(function () {
-  controlUpdate();
-}, 0.1);
-
 video.addEventListener("ended", function (e) {
-  if (data["autoplay"] && currentVideo < data["episodes"].length) {
-    nextVideo();
-  }
+  nextVideo();
 });
 
 $(window).on("load", function () {
-  playM3u8(data["episodes"][0]["url"]);
+  playEpisode(data["episodes"][0]["url"]);
+  controlUpdate();
 });
