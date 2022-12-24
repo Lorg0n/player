@@ -8,6 +8,7 @@ var videoName = document.getElementById("video_name");
 
 var prevDiv = document.getElementById("div_prev");
 var nextDiv = document.getElementById("div_next");
+var skipDiv = document.getElementById("div_skip");
 
 var nextState = false;
 var prevState = false;
@@ -65,6 +66,10 @@ function nextVideo() {
   }
 }
 
+function skipVideo() {
+  video.currentTime += 60;
+}
+
 function prevVideo() {
   if (prevState){
     playEpisode(data["episodes"][currentVideo - 1]["url"]);
@@ -72,6 +77,10 @@ function prevVideo() {
     controlUpdate();
   }
 }
+
+skipDiv.addEventListener('click', function (event) {
+  skipVideo()
+});
 
 prevDiv.addEventListener('click', function (event) {
   prevVideo()
@@ -114,4 +123,8 @@ video.addEventListener("ended", function (e) {
 $(window).on("load", function () {
   playEpisode(data["episodes"][0]["url"]);
   controlUpdate();
+});
+
+screen.addEventListener("orientationchange", function () {
+  console.log("The orientation of the screen is: " + screen.orientation);
 });
