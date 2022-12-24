@@ -8,10 +8,14 @@
         <title>Player running...</title>
     </head>
     <body>
-        <video id="video" controls="" preload="auto"></video>
+        <video id="video" controls="" preload="auto" autoplay="true" muted="muted">
+        </video>
         <div id="menu">
             <h1 id="video_name">Загрузка...</h1>
             <div id="controls_">
+                <div id="div_skip">
+                    <svg fill=#fff xmlns="http://www.w3.org/2000/svg" viewBox="-5 -5 24 24" fill="currentColor"><path d="M7.071 5.314l4.95-4.95a1 1 0 1 1 1.414 1.414L7.778 7.435a1 1 0 0 1-1.414 0L.707 1.778A1 1 0 1 1 2.121.364l4.95 4.95zm0 6l4.95-4.95a1 1 0 1 1 1.414 1.414l-5.657 5.657a1 1 0 0 1-1.414 0L.707 7.778a1 1 0 1 1 1.414-1.414l4.95 4.95z"></path></svg>
+                </div>
                 <div id="div_prev">
                     <svg fill=#fff xmlns="http://www.w3.org/2000/svg" viewBox="-5 -4.5 24 24" fill="currentColor"><path d="M6 4.071l-3.95 3.95A1 1 0 0 1 .636 6.607L6.293.95a.997.997 0 0 1 1.414 0l5.657 5.657A1 1 0 0 1 11.95 8.02L8 4.07v9.586a1 1 0 1 1-2 0V4.07z"></path></svg>
                 </div>
