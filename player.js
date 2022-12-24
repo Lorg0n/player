@@ -67,7 +67,7 @@ function nextVideo() {
 }
 
 function skipVideo() {
-  video.currentTime += 60;
+  video.currentTime += 30;
 }
 
 function prevVideo() {
